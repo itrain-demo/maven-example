@@ -3,26 +3,26 @@ pipeline {
     stages {
         stage('Code Checkout') { 
             steps {
-                git credentialsId: 'githubid', url: 'https://github.com/itrainpulsars/maven-example.git'
+                git credentialsId: 'githubid', url: 'https://github.com/itrain-demo/maven-example.git'
             }
         }
         stage('Build') { 
             steps {
-              withMaven(jdk: 'JDK', maven: 'Maven') {
+              withMaven(jdk: 'jdk', maven: 'mavn') {
                sh 'mvn clean compile'
              }
             }
         }
         stage('Test') { 
             steps {
-               withMaven(jdk: 'JDK', maven: 'Maven') {
+               withMaven(jdk: 'jdk', maven: 'mavn') {
                sh 'mvn test'
              }  
             }
         }
         stage('Package') { 
             steps {
-              withMaven(jdk: 'JDK', maven: 'Maven') {
+              withMaven(jdk: 'jdk', maven: 'mavn') {
                sh 'mvn package'
              }  
             }
